@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+::-webkit-scrollbar {
+  display: none;
+}
+@keyframes box-reveal {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  51% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+.box-reveal-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.box-reveal-text {
+  opacity: 0;
+  animation: fadeInText 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.box-reveal-bar {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: white;
+  width: 100%;
+  animation: box-reveal 1.2s ease forwards;
+  z-index: 10;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes blur-reveal {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blur-reveal {
+  animation: blur-reveal 1.0s ease-out forwards;
+}
+@keyframes shimmer-btn-shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+
+@keyframes shimmer-btn-spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+.animate-shimmer-btn-shimmer-slide {
+  animation: shimmer-btn-shimmer-slide var(--speed) ease-in-out infinite alternate;
+}
+
+.animate-shimmer-btn-spin-around {
+  animation: shimmer-btn-spin-around calc(var(--speed) * 2) infinite linear;
+}
