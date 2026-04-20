@@ -5,9 +5,10 @@ import { useEffect } from 'react';
 import { motion, useMotionValue, animate, useTransform } from 'framer-motion';
 import { Poppins } from 'next/font/google';
 
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '600', '700', '800'] });
 
-const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS_TOP = ["#1E1B4B", "#064E3B", "#312E81", "#4C1D95"];
+import Navbar from '../components/Navbar';
 
 export default function RootLayout({ children }) {
   const color = useMotionValue(COLORS_TOP[0]);
@@ -27,12 +28,13 @@ export default function RootLayout({ children }) {
   );
 
   return (
-    <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${poppins.className} antialiased bg-black text-white`}>
         <motion.div
           style={{ backgroundImage: bgImage }}
-          className="fixed inset-0 -z-10 h-full w-full"
+          className="fixed inset-0 -z-10 h-full w-full opacity-70"
         />
+        <Navbar />
         {children}
       </body>
     </html>
